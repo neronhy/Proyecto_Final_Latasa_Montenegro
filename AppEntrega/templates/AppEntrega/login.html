@@ -1,0 +1,23 @@
+{% extends "AppEntrega/padre.html" %}
+
+{% load static %}
+
+{% block titulo %} Iniciar Sesion {% endblock %}
+
+{% block TituloPrincipal %} Iniciar Sesión {% endblock %}
+
+{% block subtitulo %} <form action="" method="POST">{% csrf_token %}
+
+    {{formulario.as_p}}
+
+    <button type="submit">Iniciar Sesión</button>
+
+
+</form>
+ {% endblock %}
+
+{% block recetas %} {% endblock %}
+
+{% block users %} {% endblock %}
+
+{% block Consultas %} {% endblock %}
