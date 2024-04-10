@@ -1,4 +1,4 @@
-# Tercera Preentrega-Latasa Montenegro
+# Proyecto Final -Latasa Montenegro
 
 ## Pagina Web de Recetas MILM
 
