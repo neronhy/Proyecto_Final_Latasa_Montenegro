@@ -35,7 +35,10 @@
                 <!-- https://startbootstrap.com/solution/contact-forms-->
                 <!-- to get an API token!-->
                 <form action="/AppEntrega/sugerencias/" method="POST"> {% csrf_token %}
-                    {{formulario}}<br>
+
+                    {{formulario}}
+                    
+                    <br>
                     <input type="submit" value:"Guardar" class="btn btn-primary btn-xl"><br>
                 </form><br>
                 <a class ="btn btn-primary btn-xl" href="{% url 'Mis Sugerencias' %}">Mostrar mi Sugerencia</a>

@@ -1,0 +1,57 @@
+{% extends "AppEntrega/padre.html" %}
+
+{% load static %}
+
+{% block titulo %} Sugerencias {% endblock %}
+
+{% block TituloPrincipal %} Sugerencias {% endblock %}
+
+{% block recetas %} {% endblock %}
+
+{% block users %} {% endblock %}
+
+{% block Consultas %}
+<!-- Consultas Section-->
+<section class="page-section" id="Consultas">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Aqui podras buscar tus sugerencias</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <form action="/AppEntrega/mis_sugerencias/" method="GET"> 
+            <div class="form-floating mb-3">
+                <input class="form-control" type="text" name="nombre" placeholder="Nombre" data-sb-validations="required" />
+                <label for="name">Nombre</label>
+                <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere un nombre.</div>
+            </div>
+            <input type="submit" value:"Buscar" class="btn btn-primary btn-xl">
+        </form>
+
+        <ol>
+            {% for sabor in result %}
+            <li>
+
+                
+                <p>Nombre: {{sabor.nombre}}</p>
+                <p>Nombre de la Receta: {{sabor.nombre_receta}}</p>
+                <p>Sabor: {{sabor.sabor}}</p>
+                <p>Cantidad de pasos: {{sabor.cant_pasos}}</p>
+                <p>Dificultad: {{sabor.dificultad}}</p>
+
+                <button>
+                    <a href="{% url 'ELiminarSugerencias' sugerencia.nombre %}"> Eliminar Sugerencia</a>
+                </button>
+
+
+            </li>
+            {% endfor %}
+            </ol>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

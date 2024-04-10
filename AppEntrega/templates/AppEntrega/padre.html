@@ -17,6 +17,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'AppEntrega/css/styles.css' %}" rel="stylesheet" />
     </head>
+    {% block cabecera %}
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
@@ -27,16 +28,44 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">                       
+                    <ul class="navbar-nav ms-auto">                  
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Crear mi Consulta' %}">Consultas</a></li>        
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Recetas' %}">Recetas</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Crear mi Consulta' %}">Consultas</a></li>         
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Hacer Sugerencia' %}">Sugerinos una receta!</a></li>
+                        
+                        {% if request.user.is_authenticated %}
+
+                        <p style="color: aquamarine;"> {{user.username}}</p>
+
+
+                        {% with user.avatar_set.last as pfp %}
+
+                        {% if pfp %}
+
+                        <img src="{{pfp.imagen.url}}" alt="No se encuentra la imagen." style="max-width: 90px ;">
+
+                        {% endif %}
+
+                        {% endwith %}
+
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'EditarUsuario' %}">Editar Perfil</a></li>    
+
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Logout' %}">Cerrar Sesión</a></li>    
+
+                        {% else %}      
+
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'REGISTRO' %}">Registrar</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'LOGIN' %}">Iniciar Sesión</a></li>            
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'LOGIN' %}">Iniciar Sesión</a></li>
+
+                        {% endif %}
+                        
+  
+                                
                     </ul>
                 </div>
             </div>
         </nav>
+        {% endblock %}
         <!-- Masthead-->
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
@@ -75,7 +104,7 @@
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/cabin.png' %}" alt="..." />
+                            <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/milanesa.jpg' %}" alt="..." />
                         </div>
                     </div>
                     <!-- Portfolio Item 2-->
@@ -84,7 +113,7 @@
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/cake.png' %}" alt="..." />
+                            <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/cheese.jpg' %}" alt="..." />
                         </div>
                     </div>
                     <!-- Portfolio Item 3-->
@@ -93,7 +122,7 @@
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/circus.png' %}" alt="..." />
+                            <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/pasteldepapa.jpg' %}" alt="..." />
                         </div>
                     </div>
                     <!-- Portfolio Item 4-->
@@ -102,7 +131,7 @@
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/game.png' %}" alt="..." />
+                            <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/pancho.jpg' %}" alt="..." />
                         </div>
                     </div>
                     <!-- Portfolio Item 5-->
@@ -111,7 +140,7 @@
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/safe.png' %}" alt="..." />
+                            <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/empsalta.jpg' %}" alt="..." />
                         </div>
                     </div>
                     <!-- Portfolio Item 6-->
@@ -120,7 +149,7 @@
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/submarine.png' %}" alt="..." />
+                            <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/buñuelos.jpg' %}" alt="..." />
                         </div>
                     </div>
                 </div>
@@ -253,9 +282,9 @@
                     </div>
                     <!-- Footer About Text-->
                     <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">Acerca de Recetas MILM</h4>
+                        <h4 class="text-uppercase mb-4">Que es Recetas MILM?</h4>
                         <p class="lead mb-0">
-                            Recetas MILM fue creada para facilitar la busqueda de recetas argentinas caseras y poder permitirle a los usuarios agregar sus ideas para compartirlas con todos.
+                            Recetas MILM es una pagina creada con la intencion de facilitar la busqueda de recetas argentinas caseras y poder permitirle a los usuarios agregar sus ideas para compartirlas con todos.
                             
                         </p>
                     </div>
@@ -264,7 +293,7 @@
         </footer>
         <!-- Copyright Section-->
         <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright &copy; Your Website 2023</small></div>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'about' %}">Acerca de MILM</a></li>        
         </div>
         <!-- Portfolio Modals-->
         <!-- Portfolio Modal 1-->
@@ -278,7 +307,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Log Cabin</h2>
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Milanesas de pollo con Puré de papas</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -286,10 +315,20 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/milanesa.png" alt="..." />
+                                    <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/milanesa.jpg' %}" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                                    <p class="mb-4">Ingredientes
+                                        <div>
+                                            <div> 4 filetes de pechuga de pollo sin piel, cortada como para milanesa </div>
+                                            3 Unidades Huevo Batido
+                                            1 Cucharada Ajo Picado (y perejil)
+                                            2 Cucharadas Leche Parcialmente Descremada
+                                            1 cucharilla Mostaza, preparada, amarilla
+                                            7 gramos Miel
+                                            1 gramo Sal (y pimienta)
+                                            250 gramos Galleta Molida
+                                            1 Paquete Puré De Papas Maggi
+                                        </div></p>                                    <button class="btn btn-primary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Close Window
                                     </button>
@@ -310,7 +349,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Tasty Cake</h2>
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Cheese Cake</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -318,10 +357,28 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cake.png" alt="..." />
+                                    <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/cheese.jpg' %}" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                                    <p class="mb-4">Ingredientes
+                                        <div>
+                                            <div> Base: 400 gr de Galletitas dulces y 120 gr de Manteca sin sal </div>
+                                            <div> Relleno: Azúcar impalpable
+                                                30 Gramos;
+                                                Azúcar blanca
+                                                60 Gramos;
+                                                Crema de leche o nata
+                                                160 c.c.;
+                                                Esencia de vainilla
+                                                1 cdta;
+                                                Jugo de limón(30 cc)
+                                                3 cdas;
+                                                Leche condensada
+                                                50 Gramos;
+                                                Queso crema
+                                                770 Gramos;
+                                                Ralladura De Limón
+                                                1 unidad.</div>
+                                        </div></p>                                    <button class="btn btn-primary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Close Window
                                     </button>
@@ -342,7 +399,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Circus Tent</h2>
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Pastel de papa</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -350,10 +407,22 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/circus.png" alt="..." />
+                                    <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/pasteldepapa.jpg' %}" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                                    <p class="mb-4">Ingredientes
+                                        <div>
+                                            <div>2 kg de papa blanca picada en hojuelas delgadas </div>                      
+                                                250 gr de queso fresco o parmesano,
+                                                250 gr de queso fundido,
+                                                1 taza de leche evaporada,
+                                                250 gr de harina sin preparar,
+                                                6 huevos batidos,
+                                                sal,
+                                                sazonador ajinomoto,
+                                                1 cucharada de anís en grano,
+                                                mantequilla,
+                                                aceite.
+                                        </div></p>                                    <button class="btn btn-primary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Close Window
                                     </button>
@@ -374,7 +443,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Controller</h2>
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Panchos/Hot Dogs Artesanales</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -382,10 +451,25 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/game.png" alt="..." />
+                                    <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/pancho.jpg' %}" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                                    <p class="mb-4">Ingredientes
+                                        <div>
+                                            <div>  Salchichas Frankfurt 4, </div>
+                                            Panecillos para perrito
+                                            4,
+                                            Pepinillo agridulce
+                                            2,
+                                            Cebolla trozo pequeño
+                                            1,
+                                            Mostaza de Dijon cucharada
+                                            0.5,
+                                            Miel cucharada
+                                            0.5,
+                                            Cebolla frita crujiente,
+                                            Kétchup,
+                                            Mostaza amarilla.
+                                        </div></p>                                    <button class="btn btn-primary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Close Window
                                     </button>
@@ -406,7 +490,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Locked Safe</h2>
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Empanadas Salteñas</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -414,10 +498,18 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/safe.png" alt="..." />
+                                    <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/empsalta.jpg' %}" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                                    <p class="mb-4">Ingredientes
+                                        <div>
+                                            <div>  Para 2 docenas y ½ de empanadas salteñas </div>                                          
+                                                500 gr. de carne (nalga, cuadrada, bola de lomo o molida sin grasa),
+                                                250 gramos de cebolla ,
+                                                250 gramos de papas,
+                                                ¼ pimentón rojo,
+                                                3 huevos hervidos,
+                                                60 gramos de grasa de vaca.
+                                        </div></p>                                    <button class="btn btn-primary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Close Window
                                     </button>
@@ -438,7 +530,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Submarine</h2>
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Buñuelos Caseros</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -446,10 +538,18 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/submarine.png" alt="..." />
+                                    <img class="img-fluid" src="{% static 'AppEntrega/assets/img/portfolio/buñuelos.jpg' %}" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
+                                    <p class="mb-4">Ingredientes
+                                        <div>
+                                            <div></div>
+                                                Una taza y 1/2 de harina leudante,
+                                                1/2 taza de azúcar,
+                                                Dos huevos,
+                                                1/2 taza de leche,
+                                                Ralladura de naranja o extracto de vainilla,
+                                                Aceite para freír.
+                                        </div></p>                                    <button class="btn btn-primary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Close Window
                                     </button>

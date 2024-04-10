@@ -1,0 +1,23 @@
+{% extends "AppEntrega/padre.html" %}
+
+{% load static %}
+
+{% block titulo %} Personalización {% endblock %}
+
+{% block TituloPrincipal %} Agrega tu foto de perfil! {% endblock %}
+
+{% block subtitulo %} <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+    {{formulario.as_p}}
+
+    <button type="submit">Establecer</button>
+
+
+</form>
+ {% endblock %}
+
+{% block recetas %} {% endblock %}
+
+{% block users %} {% endblock %}
+
+{% block Consultas %} {% endblock %}

@@ -5,14 +5,18 @@ from django.contrib.auth.views import LogoutView
 urlpatterns = [
     path("", inicio, name="inicio"),    
     path("login/", inicio_sesion, name="LOGIN"),
-    path("usuario/", ver_user, name="Ver mi Usuario"),
     path("recetas/", ver_recetas, name="Recetas"),
     path("registro/", registro, name="REGISTRO"),
-    path("logout/", LogoutView.as_view(template_name="AppEntrega/logout.html"), name="Logout"),
+    path("logout/", cerrar_sesion, name="Logout"),
+    path("personalizarPerfil/", agregarAvatar, name="Avatar"),
+    path("editarPerfil/", editarUsuario, name="EditarUsuario"),
+    path("about/", About, name="about"),
 
     #CRUD DE RECETAS
     path("sugerencias/", sugerir, name="Hacer Sugerencia"),
     path("mis_sugerencias/", mis_sugerencias, name="Mis Sugerencias"),
+    path("editarSugerencias/<nombreSugerencia>/", editarSugerencia, name="EditarSugerencia"),
+    path("eliminarSugerencias/<nombreSugerencia>/", eliminarSugerencia, name="EliminarSugerencia"),
 
 
     #CRUD DE CONSULTAS

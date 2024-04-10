@@ -3,6 +3,58 @@
 {% load static %}
 
 {% block titulo %} Sugerencias {% endblock %}
+{% block cabecera %} 
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'inicio' %}">Recetas Milm</a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">                       
+
+                    {% if request.user.is_authenticated %}
+
+                    <p style="color: aquamarine;"> {{user.username}}</p>
+                    
+                    {% with user.avatar_set.last as pfp %}
+
+                    {% if pfp %}
+
+                    <img src="{{pfp.imagen.url}}" alt="No se encuentra la imagen." style="max-width: 90px ;">
+
+                    {% endif %}
+
+                    {% endwith %}
+
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Crear mi Consulta' %}">Consultas</a></li>        
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Recetas' %}">Recetas</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Hacer Sugerencia' %}">Sugerinos una receta!</a></li>
+                    
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Avatar' %}">Cambiar Foto de perfil</a></li>    
+
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Logout' %}">Cerrar Sesión</a></li>    
+
+                    {% else %}      
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Crear mi Consulta' %}">Consultas</a></li>        
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Recetas' %}">Recetas</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Hacer Sugerencia' %}">Sugerinos una receta!</a></li>
+                    
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'REGISTRO' %}">Registrar</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'LOGIN' %}">Iniciar Sesión</a></li>
+
+                    {% endif %}
+                    
+
+                            
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
 
 {% block TituloPrincipal %} Sugerencias {% endblock %}
 
@@ -39,8 +91,10 @@
                 <p>Sabor: {{sabor.sabor}}</p>
                 <p>Cantidad de pasos: {{sabor.cant_pasos}}</p>
                 <p>Dificultad: {{sabor.dificultad}}</p>
+                
             </li>
             {% endfor %}
+            
             </ol>
 
             </div>

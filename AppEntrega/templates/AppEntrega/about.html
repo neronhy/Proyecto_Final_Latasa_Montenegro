@@ -1,0 +1,45 @@
+{% extends "AppEntrega/padre.html" %}
+
+
+{% load static %}
+
+{% block titulo %} Acerca de {% endblock %}
+
+{% block TituloPrincipal %} Acerca de MILM {% endblock %}
+
+{% block subtitulo %} {% endblock %}
+
+{% block recetas %} {% endblock %}
+
+{% block users %} {% endblock %}
+
+{% block Consultas %}
+
+<section id="posts" class="container-md d-flex flex-column  align-items-center justify-content-center min-vh-15">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h1 class="page-title"></h1>
+            </div>
+        </div>
+    
+        <div class="row mb-5">
+    
+            <div class="d-md-flex post-entry-2 half justify-content-center">
+                <a href="#" class="me-4 thumbnail">
+                    <img src="{% static 'img/about_1.jpg' %}" alt="" class="img-fluid">
+                </a>
+                <div class="ps-md-5 mt-4 mt-md-0">
+                    <h2 class="mb-4 display-4">RECETAS MILM</h2>
+                    <p>
+                        Recetas MILM surgio como un proyecto de Coderhouse encabezado por el alumno Joaquin Latasa Montenegro, con el objetivo de que personas a lo largo del mundo puedan compartir su cultura y conocimientos gastronomicos.
+                        Esperamos que con el paso del tiempo este espacio continue evolucionando y enriqueciendose con una amplia variedad de sabores.
+                        Somos muy criticos asi que cada consulta y/o critica que es enviada por el apartado de consultas sera tomada en cuestion con el objetivo de mejorar este sitio.
+                        Bienvenidos a Recetas MILM!
+                    </p>
+
+        </div>
+    
+        </div>
+    </section>
+{% endblock %}
