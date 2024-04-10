@@ -101,6 +101,9 @@ _mis sugerencias_:
 ```
 
 ### IMPORTANTE
-La pagina aun esta siendo desarrollada y por eso apartados como el de "Recetas" no tienen contenido cuando haces click en las fotos, todas las funciones que esperamos agregar seran añadidas a medida que se desarrolle la pagina.
+
+A continuacion podra ver un video de la pagina web siendo utilizada:
+
+https://youtu.be/r5U1lF0tQSU
 
 
